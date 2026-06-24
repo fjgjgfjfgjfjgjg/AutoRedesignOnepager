@@ -56,50 +56,63 @@
     .monitor-text.visible { opacity: 1; transform: translateY(0); }
     .monitor-text .red { color: var(--red); }
 
-    /* PROZESS */
-    #prozess { padding: 120px 40px; max-width: 900px; margin: 0 auto; }
-    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
-    .step { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .step:last-child { border-bottom: none; }
-    .step-number { font-size: clamp(80px, 12vw, 160px); font-weight: 900; line-height: 0.85; color: var(--red); letter-spacing: -4px; margin-bottom: 8px; }
-    .step-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 24px; }
-    .step-title { font-size: clamp(28px, 4.5vw, 56px); font-weight: 900; text-transform: uppercase; line-height: 1.0; letter-spacing: -1.5px; margin-bottom: 20px; }
+    /* PROZESS — horizontal scroll */
+    #prozess { position: relative; }
+    .prozess-outer { height: 400vh; position: relative; }
+    .prozess-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+    .prozess-header { position: absolute; top: 60px; left: 60px; z-index: 10; }
+    .prozess-track { display: flex; align-items: center; height: 100%; gap: 40px; padding: 0 60px; will-change: transform; }
+    .step { flex: 0 0 500px; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 44px; height: 72vh; max-height: 680px; display: flex; flex-direction: column; }
+    .step-number { font-size: 80px; font-weight: 900; line-height: 0.85; color: var(--red); letter-spacing: -4px; margin-bottom: 8px; }
+    .step-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+    .step-title { font-size: clamp(20px, 2.2vw, 27px); font-weight: 900; text-transform: uppercase; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 14px; }
     .step-title .red { color: var(--red); }
-    .step-body { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.55); max-width: 540px; }
-    .step-visual { margin-top: 40px; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; background: #0d0d0d; }
-    .mock-browser { background: #1a1a1a; padding: 10px 14px; display: flex; align-items: center; gap: 6px; }
-    .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .step-body { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .step-visual { flex: 1; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; background: #111; min-height: 0; }
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    .mock-browser { background: #1a1a1a; padding: 9px 12px; display: flex; align-items: center; gap: 5px; }
+    .mock-dot { width: 9px; height: 9px; border-radius: 50%; }
     .mock-dot.r { background: #ff5f56; } .mock-dot.y { background: #febc2e; } .mock-dot.g { background: #27c840; }
-    .mock-url { margin-left: 10px; font-size: 11px; color: rgba(255,255,255,0.3); font-family: monospace; }
-    .mock-content { padding: 24px; }
-    .mock-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .mock-check-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px; border-radius: 4px; font-size: 12px; line-height: 1.4; margin-bottom: 8px; }
+    .mock-url { margin-left: 8px; font-size: 10px; color: rgba(255,255,255,0.3); font-family: monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 300px; }
+    .mock-content { padding: 16px; }
+    .mock-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .mock-check-item { display: flex; align-items: flex-start; gap: 8px; padding: 9px; border-radius: 4px; font-size: 11px; line-height: 1.4; margin-bottom: 5px; }
     .mock-check-item.bad { background: rgba(204,34,0,0.1); border: 1px solid rgba(204,34,0,0.2); color: var(--red); }
     .mock-check-item.good { background: rgba(39,200,64,0.08); border: 1px solid rgba(39,200,64,0.2); color: #27c840; }
-    .terminal-line { font-family: monospace; font-size: 13px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 10px; }
-    .terminal-line .dot { width: 8px; height: 8px; border-radius: 50%; background: #27c840; flex-shrink: 0; }
-    .email-mock { background: rgba(255,255,255,0.03); border-radius: 6px; padding: 16px; font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.55); }
+    .terminal-line { font-family: monospace; font-size: 12px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 8px; }
+    .terminal-line .dot { width: 7px; height: 7px; border-radius: 50%; background: #27c840; flex-shrink: 0; }
+    .email-mock { background: rgba(255,255,255,0.03); border-radius: 6px; padding: 14px; font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.55); }
     .email-link { color: var(--red); font-weight: 700; }
-    .city-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
+    .city-row { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
     .city-name { font-weight: 600; }
     .city-pin { color: var(--red); margin-right: 8px; }
-    .city-status { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--gray); }
+    .city-status { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--gray); }
 
-    /* COMPARISON */
-    #comparison { padding: 120px 40px; background: #050505; }
-    .comparison-inner { max-width: 900px; margin: 0 auto; }
-    .big-quote { font-size: clamp(22px, 3.5vw, 40px); font-weight: 900; text-transform: uppercase; line-height: 1.15; letter-spacing: -1px; }
-    .big-quote .dim { color: rgba(255,255,255,0.25); }
-    .big-quote .red { color: var(--red); }
+    /* COMPARISON — word reveal */
+    #comparison { padding: 140px 60px; background: #050505; }
+    .comparison-inner { max-width: 960px; margin: 0 auto; }
+    .big-quote { font-size: clamp(24px, 3.8vw, 44px); font-weight: 900; text-transform: uppercase; line-height: 1.2; letter-spacing: -1px; }
+    .big-quote .word { color: rgba(255,255,255,0.18); transition: color 0.3s ease; display: inline; }
+    .big-quote .word.lit { color: var(--white); }
+    .big-quote .word.red-word { color: var(--red) !important; }
 
     /* FEATURES */
-    #features { padding: 120px 0; }
-    .features-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
-    .features-left { padding: 0 60px; position: sticky; top: 40vh; }
-    .features-right { padding: 0 60px 0 0; }
-    .section-title { font-size: clamp(36px, 6vw, 72px); font-weight: 900; text-transform: uppercase; letter-spacing: -2px; line-height: 0.95; margin-bottom: 8px; }
+    #features { padding: 0; }
+    .features-outer { display: grid; grid-template-columns: 1fr 1fr; align-items: start; min-height: 100vh; }
+    .features-left {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px;
+      background: var(--black);
+    }
+    .features-right { padding: 120px 60px 120px 40px; }
+    .section-title { font-size: clamp(36px, 4vw, 56px); font-weight: 900; text-transform: uppercase; letter-spacing: -2px; line-height: 0.95; margin-bottom: 8px; }
     .section-title .red { color: var(--red); }
-    .feature-card { padding: 40px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 20px; border-radius: 6px; }
+    .feature-card { padding: 40px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 20px; border-radius: 6px; background: #080808; }
     .feature-num { font-size: 48px; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 4px; }
     .feature-tag { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
     .feature-title { font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 12px; }
@@ -196,14 +209,14 @@
       .pricing-grid { grid-template-columns: 1fr; }
       .enterprise-card { grid-template-columns: 1fr; }
       .enterprise-right { text-align: left; }
-      .features-grid { grid-template-columns: 1fr; }
-      .features-left { position: static; padding: 0 20px; margin-bottom: 40px; }
-      .features-right { padding: 0 20px; }
+      .features-outer { grid-template-columns: 1fr; }
+      .features-left { position: static; height: auto; padding: 60px 20px 40px; }
+      .features-right { padding: 0 20px 60px; }
       footer { padding: 40px 20px; }
       .footer-inner { grid-template-columns: 1fr; gap: 40px; margin-bottom: 40px; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
       #preise, #faq, #cta, #comparison, #vorteile { padding: 80px 20px; }
-      #features { padding: 80px 0; }
+      #features { padding: 0; }
     }
   </style>
 </head>
@@ -216,7 +229,7 @@
     <li><a href="#prozess">Prozess</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#preise">Preise</a></li>
-    <li><a href="https://auto-redesign-dashboard.vercel.app" class="btn-nav">Jetzt starten</a></li>
+    <li><a href="#preise" class="btn-nav">Jetzt starten</a></li>
   </ul>
 </nav>
 
@@ -225,7 +238,7 @@
   <div class="hero-badge">Vollautomatisches KI Cold Outreach System</div>
   <h1 class="hero-h1">Neue Website<br>für Unternehmen<br><span class="red">in kürzester Zeit.</span></h1>
   <p class="hero-sub">AutoRedesign scannt täglich lokale Unternehmen, generiert in Sekunden ein <strong>individuelles KI-Redesign</strong> — und versendet diese als Vergleich als personalisierte Cold Email. Vollautomatisch.</p>
-  <a href="https://auto-redesign-dashboard.vercel.app" class="btn-primary">Zugang sichern →</a>
+  <a href="#preise" class="btn-primary">Zugang sichern →</a>
 </section>
 
 <!-- STATS -->
@@ -267,70 +280,80 @@
 
 <!-- PROZESS -->
 <section id="prozess">
-  <div class="section-label">// Wie es funktioniert</div>
-  <div class="step">
-    <div class="step-number">01</div>
-    <div class="step-tag">// Schritt 01 — Finden</div>
-    <h2 class="step-title">AutoRedesign scannt <span class="red">täglich deine Zielstädte.</span></h2>
-    <p class="step-body">Du gibst Städte und Branchen vor. Die Pipeline läuft jeden Morgen automatisch ab — analysiert lokale Unternehmenswebsites, bewertet sie und wählt die besten Alternativen für Sie aus. Ohne eine Minute deiner Zeit.</p>
-    <div class="step-visual">
-      <div class="mock-browser"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><span class="mock-url">pipeline › run-pipeline</span></div>
-      <div class="mock-content">
-        <div class="terminal-line"><span class="dot"></span>run-pipeline</div>
-        <div class="terminal-line"><span class="dot"></span>Scanning Stuttgart... 47 prospects found</div>
-        <div class="terminal-line"><span class="dot"></span>Scanning München... 63 prospects found</div>
-        <div class="terminal-line"><span class="dot" style="background:#febc2e;"></span>Analyzing websites...</div>
+  <div class="prozess-outer">
+    <div class="prozess-sticky">
+      <div class="prozess-header">
+        <div class="section-label">// Wie es funktioniert</div>
       </div>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-number">02</div>
-    <div class="step-tag">// Schritt 02 — Redesignen</div>
-    <h2 class="step-title">Per AI wird in Minuten automatisiert <span class="red">ein neues Design generiert.</span></h2>
-    <p class="step-body">Die AI arbeitet per API und analysiert Screenshot, Farben und Inhalte der alten Website — und generiert ein vollständiges, modernes HTML/CSS. Kein Template. Echtes, individuelles Redesign.</p>
-    <div class="step-visual">
-      <div class="mock-browser"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><span class="mock-url">autoredesign.homepageupgrade.de/compare/mayer-gmbh</span></div>
-      <div class="mock-content">
-        <div class="mock-cols">
-          <div>
-            <div class="mock-check-item bad"><span>✕</span>Veraltetes Website-Design mit wenig modernem visuellen Stil</div>
-            <div class="mock-check-item bad"><span>✕</span>Fehlende Öffnungszeiten und keine klare Call-to-Action</div>
-            <div class="mock-check-item bad"><span>✕</span>Schlechte mobile Lesbarkeit</div>
-          </div>
-          <div>
-            <div class="mock-check-item good"><span>✓</span>Prominente CTAs auf jeder Sektion</div>
-            <div class="mock-check-item good"><span>✓</span>Modernes, professionelles Layout</div>
-            <div class="mock-check-item good"><span>✓</span>Vollständig responsive Design</div>
+      <div class="prozess-track" id="prozessTrack">
+        <!-- Spacer for header -->
+        <div style="flex:0 0 20px;"></div>
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-tag">// Schritt 01 — Finden</div>
+          <h2 class="step-title">AutoRedesign scannt <span class="red">täglich deine Zielstädte.</span></h2>
+          <p class="step-body">Du gibst Städte und Branchen vor. Die Pipeline läuft jeden Morgen automatisch ab — analysiert lokale Unternehmenswebsites, bewertet sie und filtert die besten Kandidaten. Ohne eine Minute deiner Zeit.</p>
+          <div class="step-visual">
+            <div class="mock-browser"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><span class="mock-url">pipeline › run-pipeline</span></div>
+            <div class="mock-content">
+              <div class="terminal-line"><span class="dot"></span>run-pipeline</div>
+              <div class="terminal-line"><span class="dot"></span>Scanning Stuttgart... 47 prospects found</div>
+              <div class="terminal-line"><span class="dot"></span>Scanning München... 63 prospects found</div>
+              <div class="terminal-line"><span class="dot" style="background:#febc2e;"></span>Analyzing websites...</div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-number">03</div>
-    <div class="step-tag">// Schritt 03 — Senden</div>
-    <h2 class="step-title">Personalisierte Email <span class="red">landet automatisch.</span></h2>
-    <p class="step-body">Das System versendet eine personalisierte Cold Email mit Vorher/Nachher-Vergleich direkt an den Geschäftsführer. Du wachst auf — und findest Anfragen im Postfach. DSGVO-konform, vollständig automatisiert.</p>
-    <div class="step-visual">
-      <div class="mock-browser"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><span class="mock-url">brevo › Neue Nachricht</span></div>
-      <div class="mock-content">
-        <div class="email-mock">Ich bin Basti, KI Stratege, Webdesigner und Performancehelfer für Deutsche Unternehmen.<br><br>Ich hab mir heute eure Website angeschaut und spontan eine überarbeitete Version gebaut — einfach um zu zeigen was möglich wäre.<br><br>Hier seht ihr das Ergebnis vorher und nachher: <span class="email-link">autoredesign.homepageupgrade.de/compare/...</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-number">04</div>
-    <div class="step-tag">// Schritt 04 — Skalieren</div>
-    <h2 class="step-title">Mehrere Städte, <span class="red">ein System.</span></h2>
-    <p class="step-body">Mit dem Pro oder Agency Plan läuft AutoRedesign in bis zu 5 Städten gleichzeitig. Das Dashboard zeigt alle Ergebnisse, License Keys werden automatisch per Stripe verwaltet.</p>
-    <div class="step-visual">
-      <div class="mock-browser"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><span class="mock-url">dashboard › Städte & Pipeline</span></div>
-      <div class="mock-content">
-        <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">Berlin</span></span><span class="city-status">Aktiv</span></div>
-        <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">München</span></span><span class="city-status">Aktiv</span></div>
-        <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">Frankfurt</span></span><span class="city-status">Aktiv</span></div>
-        <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">Köln</span></span><span class="city-status">Aktiv</span></div>
-        <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">Dresden</span></span><span class="city-status">Wartend</span></div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-tag">// Schritt 02 — Redesignen</div>
+          <h2 class="step-title">Per AI wird in Minuten <span class="red">ein neues Design generiert.</span></h2>
+          <p class="step-body">Die AI analysiert Screenshot, Farben und Inhalte der alten Website — und generiert ein vollständiges, modernes HTML/CSS. Kein Template. Echtes, individuelles Redesign.</p>
+          <div class="step-visual">
+            <div class="mock-browser"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><span class="mock-url">autoredesign.homepageupgrade.de/compare/mayer-gmbh</span></div>
+            <div class="mock-content">
+              <div class="mock-cols">
+                <div>
+                  <div class="mock-check-item bad"><span>✕</span>Veraltetes Design, wenig moderner Stil</div>
+                  <div class="mock-check-item bad"><span>✕</span>Keine klare Call-to-Action</div>
+                  <div class="mock-check-item bad"><span>✕</span>Schlechte mobile Lesbarkeit</div>
+                </div>
+                <div>
+                  <div class="mock-check-item good"><span>✓</span>Prominente CTAs auf jeder Sektion</div>
+                  <div class="mock-check-item good"><span>✓</span>Modernes, professionelles Layout</div>
+                  <div class="mock-check-item good"><span>✓</span>Vollständig responsive</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-tag">// Schritt 03 — Senden</div>
+          <h2 class="step-title">Personalisierte Email <span class="red">landet automatisch.</span></h2>
+          <p class="step-body">Das System versendet eine personalisierte Cold Email mit Vorher/Nachher-Vergleich direkt an den Geschäftsführer. DSGVO-konform, vollständig automatisiert.</p>
+          <div class="step-visual">
+            <div class="mock-browser"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><span class="mock-url">brevo › Neue Nachricht</span></div>
+            <div class="mock-content">
+              <div class="email-mock">Ich bin Basti, KI Stratege und Webdesigner für Deutsche Unternehmen.<br><br>Ich hab mir heute eure Website angeschaut und spontan eine überarbeitete Version gebaut — einfach um zu zeigen was möglich wäre.<br><br>Vorher &amp; Nachher: <span class="email-link">autoredesign.homepageupgrade.de/compare/...</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <div class="step-tag">// Schritt 04 — Skalieren</div>
+          <h2 class="step-title">Mehrere Städte, <span class="red">ein System.</span></h2>
+          <p class="step-body">Mit dem Pro oder Agency Plan läuft AutoRedesign in bis zu 5 Städten gleichzeitig. Das Dashboard zeigt alle Ergebnisse, Lizenzen werden automatisch per Stripe verwaltet.</p>
+          <div class="step-visual">
+            <div class="mock-browser"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><span class="mock-url">dashboard › Städte & Pipeline</span></div>
+            <div class="mock-content">
+              <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">Berlin</span></span><span class="city-status">Aktiv</span></div>
+              <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">München</span></span><span class="city-status">Aktiv</span></div>
+              <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">Frankfurt</span></span><span class="city-status">Aktiv</span></div>
+              <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">Köln</span></span><span class="city-status">Aktiv</span></div>
+              <div class="city-row"><span><span class="city-pin">📍</span><span class="city-name">Dresden</span></span><span class="city-status">Wartend</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -339,18 +362,18 @@
 <!-- COMPARISON -->
 <section id="comparison">
   <div class="comparison-inner">
-    <p class="big-quote"><span class="dim">Die meisten schicken kalte Emails ohne Mehrwert. AutoRedesign schickt ein fertiges </span><span class="red">Redesign</span><span class="dim"> — bevor der Inhaber auch nur gefragt hat. Das ist der </span><span>Unterschied.</span></p>
+    <p class="big-quote" id="quoteText"></p>
   </div>
 </section>
 
 <!-- FEATURES -->
 <section id="features">
-  <div class="features-grid">
+  <div class="features-outer">
     <div class="features-left">
       <div class="section-label">// Features</div>
-      <h2 class="section-title" style="font-size:clamp(36px,5vw,60px);">Alles drin.<br><span class="red">Direkt einsatzbereit.</span></h2>
-      <p style="font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;margin-top:16px;max-width:320px;">Kein Basteln, kein DevOps-Aufwand. AutoRedesign kommt mit allem was du brauchst — vom ersten Scan bis zum versendeten Design.</p>
-      <a href="https://auto-redesign-dashboard.vercel.app" class="btn-primary" style="margin-top:32px;">Zugang sichern →</a>
+      <h2 class="section-title">Alles drin.<br><span class="red">Direkt einsatz-<br>bereit.</span></h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;margin-top:20px;max-width:300px;">Kein Basteln, kein DevOps-Aufwand. AutoRedesign kommt mit allem was du brauchst — vom ersten Scan bis zum versendeten Design.</p>
+      <a href="#preise" class="btn-primary" style="margin-top:32px;">Zugang sichern →</a>
     </div>
     <div class="features-right">
       <div class="feature-card">
@@ -391,6 +414,7 @@
 </section>
 
 <!-- VORTEILE -->
+
 <section id="vorteile">
   <div class="vorteile-inner">
     <div class="section-label">// Der unfaire Vorteil</div>
@@ -429,7 +453,7 @@
         <div class="plan-price"><span class="plan-currency">$</span><span class="plan-amount">99</span><span class="plan-period">/mo</span></div>
         <p class="plan-desc">Perfekt für den Start in einer Stadt.</p>
         <ul class="plan-features"><li>1 Zielstadt</li><li>10 Cold Emails pro Tag</li><li>KI-Redesign Engine</li><li>GitHub Actions Pipeline</li><li>Brevo Integration</li><li>Netlify Auto-Deploy</li><li>Email-Support</li></ul>
-        <a href="https://auto-redesign-dashboard.vercel.app" class="btn-plan">Jetzt starten</a>
+        <a href="https://buy.stripe.com/8x25kCbxZ81D1yTgY25AQ00" class="btn-plan">Jetzt starten</a>
       </div>
       <div class="plan-card featured">
         <div class="plan-badge">Beliebt</div>
@@ -437,14 +461,14 @@
         <div class="plan-price"><span class="plan-currency">$</span><span class="plan-amount">129</span><span class="plan-period">/mo</span></div>
         <p class="plan-desc">Drei Städte, mehr Reach, mehr Deals.</p>
         <ul class="plan-features"><li>3 Zielstädte</li><li>25 Cold Emails pro Tag</li><li>KI-Redesign Engine</li><li>GitHub Actions Pipeline</li><li>Brevo Integration</li><li>Dashboard Zugang</li><li>Priority Support</li></ul>
-        <a href="https://auto-redesign-dashboard.vercel.app" class="btn-plan featured">Jetzt starten</a>
+        <a href="https://buy.stripe.com/bJe6oG31t4Pr4L5bDI5AQ01" class="btn-plan featured">Jetzt starten</a>
       </div>
       <div class="plan-card">
         <div class="plan-name">Agency</div>
         <div class="plan-price"><span class="plan-currency">$</span><span class="plan-amount">179</span><span class="plan-period">/mo</span></div>
         <p class="plan-desc">Für Agenturen die Vollgas geben.</p>
         <ul class="plan-features"><li>5 Zielstädte</li><li>100 Cold Emails pro Tag</li><li>KI-Redesign Engine</li><li>GitHub Actions Pipeline</li><li>Dashboard + Backoffice</li><li>CSV Import Wizard</li><li>Onboarding Call</li></ul>
-        <a href="https://auto-redesign-dashboard.vercel.app" class="btn-plan">Jetzt starten</a>
+        <a href="https://buy.stripe.com/8x2dR80Tl4PrelF4bg5AQ02" class="btn-plan">Jetzt starten</a>
       </div>
     </div>
     <div class="enterprise-card">
@@ -461,7 +485,7 @@
         <div class="enterprise-price-label">Einmalige Zahlung</div>
         <div class="enterprise-amount">$1.597</div>
         <div class="enterprise-sub">Einmalige Zahlung</div>
-        <a href="https://auto-redesign-dashboard.vercel.app" class="btn-enterprise">Jetzt kaufen →</a>
+        <a href="https://buy.stripe.com/14A01i1Xp5Tv91lcHM5AQ03" class="btn-enterprise">Jetzt kaufen →</a>
       </div>
     </div>
   </div>
@@ -484,7 +508,7 @@
 <section id="cta">
   <h2 class="cta-h2">Dein Outreach läuft.<br><span class="red">Während du schläfst.</span></h2>
   <p class="cta-sub">Starte heute. Generiere die ersten Anfragen.</p>
-  <a href="https://auto-redesign-dashboard.vercel.app" class="btn-primary" style="font-size:14px;padding:18px 44px;">Zugang sichern →</a>
+  <a href="#preise" class="btn-primary" style="font-size:14px;padding:18px 44px;">Zugang sichern →</a>
   <p class="cta-fine">Monatlich kündbar <span>·</span> Keine Mindestlaufzeit <span>·</span> Sofortiger Zugang</p>
 </section>
 
@@ -593,6 +617,79 @@
 
   // Show text1 on load
   setTimeout(function(){ text1.classList.add('visible'); }, 500);
+
+  // PROZESS HORIZONTAL SCROLL
+  (function() {
+    var outer = document.querySelector('.prozess-outer');
+    var track = document.getElementById('prozessTrack');
+    if (!outer || !track) return;
+
+    function updateProzess() {
+      var rect = outer.getBoundingClientRect();
+      var outerH = outer.offsetHeight;
+      var progress = Math.max(0, Math.min(1, -rect.top / (outerH - window.innerHeight)));
+      var maxShift = track.scrollWidth - window.innerWidth;
+      track.style.transform = 'translateX(-' + (progress * maxShift) + 'px)';
+    }
+    window.addEventListener('scroll', updateProzess, { passive: true });
+    updateProzess();
+  })();
+
+  // QUOTE WORD REVEAL
+  (function() {
+    var quoteEl = document.getElementById('quoteText');
+    if (!quoteEl) return;
+
+    var words = [
+      { text: 'Die', red: false },
+      { text: 'meisten', red: false },
+      { text: 'schicken', red: false },
+      { text: 'kalte', red: false },
+      { text: 'Emails', red: false },
+      { text: 'ohne', red: false },
+      { text: 'Mehrwert.', red: false },
+      { text: 'AutoRedesign', red: false },
+      { text: 'schickt', red: false },
+      { text: 'ein', red: false },
+      { text: 'fertiges', red: false },
+      { text: 'REDESIGN', red: true },
+      { text: '—', red: false },
+      { text: 'bevor', red: false },
+      { text: 'der', red: false },
+      { text: 'Inhaber', red: false },
+      { text: 'auch', red: false },
+      { text: 'nur', red: false },
+      { text: 'gefragt', red: false },
+      { text: 'hat.', red: false },
+      { text: 'Das', red: false },
+      { text: 'ist', red: false },
+      { text: 'der', red: false },
+      { text: 'UNTERSCHIED.', red: false }
+    ];
+
+    // Build spans
+    var html = '';
+    words.forEach(function(w, i) {
+      html += '<span class="word' + (w.red ? ' red-word' : '') + '" data-idx="' + i + '">' + w.text + '</span> ';
+    });
+    quoteEl.innerHTML = html;
+
+    var spans = quoteEl.querySelectorAll('.word');
+    var section = document.getElementById('comparison');
+
+    function updateQuote() {
+      var rect = section.getBoundingClientRect();
+      var sectionH = section.offsetHeight;
+      var progress = 1 - (rect.bottom / (sectionH + window.innerHeight));
+      var litCount = Math.round(progress * 2.5 * words.length);
+      spans.forEach(function(span, i) {
+        if (i < litCount) span.classList.add('lit');
+        else span.classList.remove('lit');
+      });
+    }
+    window.addEventListener('scroll', updateQuote, { passive: true });
+    updateQuote();
+  })();
 
   // FAQ
   function toggleFaq(btn) {
